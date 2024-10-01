@@ -21,8 +21,8 @@ class DataRepository {
             override fun onDataChange(snapshot: DataSnapshot) {
                 val list = mutableListOf<Data>()
                 for (dataSnapshot in snapshot.children){
-                    var data = snapshot.getValue(Data::class.java)
-                    data?.id=snapshot.key
+                    var data = dataSnapshot.getValue(Data::class.java)
+                    data?.id=dataSnapshot.key
 
                     list.add(data!!)
                 }

@@ -11,11 +11,11 @@ class DataViewModel: ViewModel() {
 
     private val dataRepository = DataRepository()
     private var _dataList:MutableLiveData<List<Data>> =  dataRepository.fetchData()
-    val dataList:LiveData<List<Data>> = _dataList
+    val dataList:LiveData<List<Data>> get()  = _dataList
 
 
     private val _error = MutableLiveData<String?>(null)
-    val error:MutableLiveData<String?> get() = _error
+    val error:LiveData<String?> get() = _error
 
 
     fun addData(data: Data,onSucces:()-> Unit, onFailure:()-> Unit) {

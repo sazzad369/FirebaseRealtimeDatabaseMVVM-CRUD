@@ -12,7 +12,7 @@ import com.example.firebaserealtimedatabasemvvm_crud.databinding.ActivityMainBin
 import com.example.firebaserealtimedatabasemvvm_crud.model.Data
 import com.example.firebaserealtimedatabasemvvm_crud.viewmodel.DataViewModel
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), Dataadapter.ItemClickListener {
 
     private lateinit var binding: ActivityMainBinding
     private val  dataViewModel : DataViewModel by  viewModels()
@@ -50,7 +50,6 @@ class MainActivity : AppCompatActivity() {
             val email = binding.emailEtxt.text.toString()
             val subject = binding.subjectEtxt.text.toString()
             val birthdate = binding.birthdateEtxt.text.toString()
-
             if (sudid.isNotEmpty() && name.isNotEmpty() && email.isNotEmpty() && subject.isNotEmpty() && birthdate.isNotEmpty()){
 
                 val data = Data(null,sudid, name , email, subject, birthdate)
@@ -75,7 +74,7 @@ class MainActivity : AppCompatActivity() {
         binding.birthdateEtxt.text?.clear()
     }
 
-    fun onEditItemClick(data: Data) {
+    override fun onEditItemClick(data: Data) {
 
         binding.idEtxt.setText(data.studid)
         binding.nameEtxt.setText(data.name)
@@ -93,22 +92,34 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    fun onDeleteClick(data: Data) {
+    override fun onDeleteItemClick(data: Data) {
 
-        fun onDeleteClick(data: Data) {
-
-            AlertDialog.Builder(this).apply {
-                setTitle("Delete Confirmation")
-                setMessage("Are You sure tou are want to delete this data?")
-                setPositiveButton("Yes"){_,_->}
+        AlertDialog.Builder(this).apply {
+            setTitle("Delete Confirmation")
+            setMessage("Are You sure tou are want to delete this data?")
+            setPositiveButton("Yes") { _, _ ->
                 dataViewModel.deleteData(data,
                     onSucces = {
-                        Toast.makeText(this@MainActivity,"Data deleted",Toast.LENGTH_SHORT).show()
-                    }, onFailure = {Toast.makeText(this@MainActivity,"Failed to delete data",Toast.LENGTH_SHORT).show()}
+                        Toast.makeText(
+                            this@MainActivity,
+                            "Data deleted",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    },
+                    onFailure = {
+                        Toast.makeText(
+                            this@MainActivity,
+                            "Failed to delete data",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
                 )
             }
-        }
+            setNegativeButton("No",null)
+        }.show()
 
     }
+
+
 
 }
