@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "58191841278",
+    "firebase_url": "https://fir-realtimedatabasemvvm-default-rtdb.firebaseio.com",
+    "project_id": "fir-realtimedatabasemvvm",
+    "storage_bucket": "fir-realtimedatabasemvvm.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:58191841278:android:f37c9ebf3759cf653de2af",
+        "android_client_info": {
+          "package_name": "com.example.firebaserealtimedatabasemvvm_crud"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCEiZEHR_FFot5r-aSXYQSAQYYI5SiJzDI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
